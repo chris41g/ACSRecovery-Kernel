@@ -5,4 +5,4 @@ ro.secure=0
 ro.allow.mock.location=0
 ro.debuggable=1
 persist.service.adb.enable=1
-ro.build.display.id=ClockworkMod 3.1.0.1 for Epic4G by DRockstar
+ro.build.display.id=ACSRecovery 1.0.0.4 CWM4 Based for Epic 4G by Chris41g
