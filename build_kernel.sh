@@ -9,15 +9,15 @@ MKZIP='7z -mx9 -mmt=1 a "$OUTFILE" .'
 DEFCONFIG=y
 PRODUCE_TAR=n
 PRODUCE_ZIP=y
-TARGET="cwm"
+TARGET="ACSRecovery"
 THREADS=$(expr 1 + $(grep processor /proc/cpuinfo | wc -l))
 VERSION=$(date '+%Y-%m-%d-%H.%M.%S')
-VER="3.1.0.1"
+VER="1.0.0.4"
 TARVER="$TARGET$VER.tar"
 PROJECT_NAME=SPH-D700
 HW_BOARD_REV="03"
 TARGET_LOCALE="vzw"
-TOOLCHAIN=`pwd`/../arm-2009q3/bin
+TOOLCHAIN=`pwd`/../../arm-2009q3/bin
 TOOLCHAIN_PREFIX=arm-none-linux-gnueabi-
 CROSS_COMPILE="$TOOLCHAIN/$TOOLCHAIN_PREFIX"
 KERNEL_BUILD_DIR=`pwd`/Kernel
@@ -116,11 +116,11 @@ if [ "$PRODUCE_TAR" = y ] ; then
 fi
 
 if [ "$PRODUCE_ZIP" = y ] ; then
-	echo "Generating $TARGET-$VERSION.zip for flashing as update.zip" && echo ""
-	rm -fr "$TARGET-$VERSION.zip"
+	echo "Generating $TARGET$VER.zip for flashing as update.zip" && echo ""
+	rm -fr "$TARGET$VER.zip"
 	rm -f update/kernel/zImage
 	cp $KERNEL_BUILD_DIR/arch/arm/boot/zImage update/kernel
-	OUTFILE="$PWD/$TARGET-$VERSION.zip"
+	OUTFILE="$PWD/$TARGET$VER.zip"
 	pushd update
 	eval "$MKZIP" >/dev/null 2>&1
 	popd
